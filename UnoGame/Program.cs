@@ -6,7 +6,8 @@ namespace UnoGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Card card = new Card("3");
+            card.Display();
         }
     }
 }
