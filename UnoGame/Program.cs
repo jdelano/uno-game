@@ -6,8 +6,13 @@ namespace UnoGame
     {
         static void Main(string[] args)
         {
-            Card card = new Card("3");
-            card.Display();
+            Deck deck = new Deck();
+            deck.Shuffle();
+            Console.WriteLine(deck.Cards.Count);
+            foreach (var card in deck.Cards)
+            {
+                card.Display();
+            }
         }
     }
 }
