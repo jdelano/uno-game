@@ -13,9 +13,9 @@ namespace UnoGame
 
     public class Card
     {
-        public string Number { get; set; }
-        public CardColor Color { get; set; }
-        public CardType Type { get; set; }
+        public string Number { get; private set; }
+        public CardColor Color { get; private set; }
+        public CardType Type { get; private set; }
 
 
         public Card(string number, CardColor color, CardType type)
@@ -44,5 +44,13 @@ namespace UnoGame
         {
             Console.WriteLine($"{Color} {Number}");
         }
+
+        public void UpdateColor()
+        {
+            Console.Write("Please specify a new color: 0=Red, 1=Yellow, 2=Blue, 3=Green");
+            int response = int.Parse(Console.ReadLine());
+            Color = (CardColor)response;
+        }
+
     }
 }
