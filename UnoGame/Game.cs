@@ -152,6 +152,7 @@ namespace UnoGame
                             {
                                 CurrentPlayer.Hand.Cards.Add(Deck.DrawCard());
                             }
+                            SetNextPlayer();
                             break;
                         case CardType.DrawTwo:
                             SetNextPlayer();
@@ -168,21 +169,43 @@ namespace UnoGame
                     }
                 }
             }
+            else
+            {
+                Console.WriteLine("Cannot play that card! Press any key to try again...");
+                Console.ReadKey();
+            }
         }
 
         private void SetNextPlayer()
         {
-            throw new NotImplementedException();
+            if (gameDirection == Direction.Right)
+            {
+                currentPlayerIndex--;
+                if (currentPlayerIndex < 0)
+                {
+                    currentPlayerIndex = Players.Count - 1;
+                }
+            }
+            else
+            {
+                currentPlayerIndex++;
+                if (currentPlayerIndex >= Players.Count)
+                {
+                    currentPlayerIndex = 0;
+                }
+            }
         }
 
         private void ReversePlayer()
         {
-            throw new NotImplementedException();
+            gameDirection = (gameDirection == Direction.Right) ? Direction.Left : Direction.Right;
+            SetNextPlayer();
         }
 
         private void SkipNextPlayer()
         {
-            throw new NotImplementedException();
+            SetNextPlayer();
+            SetNextPlayer();
         }
 
         private void RenderOutput()
